@@ -24,11 +24,11 @@ powerSeriesSin d x = ks
     ks = (/ 2) $ sum $ map k [0 .. 8]
     k n = sin (x * d * 2 ^ n) / 2 ^ n
 
-testing :: Instrument
-testing d x = ks
+testing :: [Double] -> Instrument
+testing coeffs d x = ks
   where
     ks = (/ 2) $ sum $ map k [0 .. 8]
-    k n = sin (x * d * 2 ^ n) / 2 ^ n
+    k n = sin (x * d * 2 ^ n) / 2 ** (coeffs !! n)
 
 harmonicSeriesSin :: Instrument
 harmonicSeriesSin d x = ks

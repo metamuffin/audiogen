@@ -13,7 +13,7 @@ libMain = putStrLn $ showSound output
 --output = playSeq 0.2 $ map (powerSeries . tone) $ cycle [0, 0, 5, 5, 2, 2, 4, 0]
 
 output :: Note Sound
-output = nsLegato (map (fmap instrument) testSongM)
+output = nsConcat (map (fmap instrument) testSongM)
 
 instrument :: Instrument
-instrument = iScale (fadeParExp 0.6) testing --((sin .) . (*)) . (* 4)
+instrument = iScale (fadeParExp 0.6) $ testing [1, 1.39, 2.48, 4.47, 6.04, 8, 10, 12.5, 15.87] --((sin .) . (*)) . (* 4)
