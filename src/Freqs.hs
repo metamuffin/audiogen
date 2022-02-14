@@ -2,22 +2,10 @@ module Freqs where
 import Note
 
 type Freq = Double
+type Duration = Double
 
 noteFreq :: Double -> Double
 noteFreq n = 440 * 2**(n / 12)
-
-powerSeriesSin :: Double -> Sound
-powerSeriesSin d x = ks * (1 / (1 + x * 10))
-  where
-    ks = (/ 2) $ sum $ map k [0 .. 8]
-    k n = sin (x * d * 2 ^ n) / 2 ^ n
-
-harmonicSeriesSin :: Double -> Sound
-harmonicSeriesSin d x = ks
-  where
-    ks = (* 0.1) $ sum $ map k [1 .. 8]
-    k n = sin (x * d * n) / n
-
 
 x# n = x * 2**(n/12) 
 x€ n = x / 2**(n/12)

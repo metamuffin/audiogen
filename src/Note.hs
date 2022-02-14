@@ -28,8 +28,19 @@ nsSeq (Note dx sx) (Note dy sy) = Note (dx + dy) (\v -> if v < dx then sx v else
 
 (.=.) = nsPar
 
+nDuration (Note d _) = d
+
+nSound (Note _ s) = s
+
 nsConcat :: [NoteS] -> NoteS
 nsConcat = foldr1 nsSeq
+
+nsLegato :: [NoteS] -> NoteS
+nsLegato l = nsConcat trackA .=. (offNote .+. nsConcat trackB)
+  where
+    trackA = map snd $ filter (even . fst) $ zip [0 ..] l
+    trackB = map snd $ filter (odd . fst) $ zip [0 ..] l
+    offNote = Note (nDuration (head l) / 2) (const 0)
 
 -- nsNoteAt :: [NoteS] -> Double -> (Double, NoteS)
 -- nsNoteAt l q = k l q 0

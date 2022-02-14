@@ -2,6 +2,7 @@ module Lib where
 
 import Freqs
 import IO
+import Instrument
 import Note
 import TestSong
 
@@ -12,7 +13,7 @@ libMain = putStrLn $ showSound output
 --output = playSeq 0.2 $ map (powerSeries . tone) $ cycle [0, 0, 5, 5, 2, 2, 4, 0]
 
 output :: Note Sound
-output = nsConcat (map (fmap instrument) testSongM)
+output = nsLegato (map (fmap instrument) testSongM)
 
-instrument :: Freq -> Sound
-instrument = ((sin .) . (*)) . (* 4)
+instrument :: Instrument
+instrument = iScale (fadeParExp 0.6) testing --((sin .) . (*)) . (* 4)
