@@ -14,8 +14,5 @@ libMain = putStrLn $ showSound output
 output :: Note Sound
 output = nsConcat (map (fmap instrument) testSongM)
 
-instrument :: Double -> Sound
+instrument :: Freq -> Sound
 instrument = ((sin .) . (*)) . (* 4)
-
-
-

@@ -18,6 +18,7 @@ testSongM = [
     Note 0.5 g4,Note 0.25 a4,Note 0.25 $b4€1,Note 0.25 c5,Note 0.25 d5,Note 0.5 c5,
     Note 0.5 a4,Note 0.5 g4,Note 0.5 r,Note 0.5 r
     ]
+    
 {-
 testSongA = [
     Note 0.5 G2,Note 0.5 C3,Note 0.5 Bb2,Note 0.5 D3,
