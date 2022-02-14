@@ -1,0 +1,3 @@
+#!/bin/fish
+stack run | xxd -r -p | ffmpeg -y -hide_banner -ac 1 -ar 48000 -f s16le -i - -f ogg -c libopus /tmp/sound.ogg
+

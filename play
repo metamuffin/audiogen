@@ -1,0 +1,3 @@
+#!/bin/fish
+stack run | xxd -r -p | ffplay -hide_banner -ac 1 -ar 48000 -f s16le -
+
